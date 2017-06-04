@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConsultorEditDlg" widgetVar="ConsultorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditConsultorTitle}">
+            <h:form id="ConsultorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{consultorController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_idconsultor}" for="idconsultor" />
+                        <p:inputText id="idconsultor" value="#{consultorController.selected.idconsultor}" title="#{bundle.EditConsultorTitle_idconsultor}" required="true" requiredMessage="#{bundle.EditConsultorRequiredMessage_idconsultor}"/>
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_nomeconsultor}" for="nomeconsultor" />
+                        <p:inputText id="nomeconsultor" value="#{consultorController.selected.nomeconsultor}" title="#{bundle.EditConsultorTitle_nomeconsultor}" required="true" requiredMessage="#{bundle.EditConsultorRequiredMessage_nomeconsultor}"/>
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_cpfcnpjconsultor}" for="cpfcnpjconsultor" />
+                        <p:inputText id="cpfcnpjconsultor" value="#{consultorController.selected.cpfcnpjconsultor}" title="#{bundle.EditConsultorTitle_cpfcnpjconsultor}" required="true" requiredMessage="#{bundle.EditConsultorRequiredMessage_cpfcnpjconsultor}"/>
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_facebookconsultor}" for="facebookconsultor" />
+                        <p:inputText id="facebookconsultor" value="#{consultorController.selected.facebookconsultor}" title="#{bundle.EditConsultorTitle_facebookconsultor}" />
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_emailconsultor}" for="emailconsultor" />
+                        <p:inputText id="emailconsultor" value="#{consultorController.selected.emailconsultor}" title="#{bundle.EditConsultorTitle_emailconsultor}" required="true" requiredMessage="#{bundle.EditConsultorRequiredMessage_emailconsultor}"/>
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_celularconsultor}" for="celularconsultor" />
+                        <p:inputText id="celularconsultor" value="#{consultorController.selected.celularconsultor}" title="#{bundle.EditConsultorTitle_celularconsultor}" required="true" requiredMessage="#{bundle.EditConsultorRequiredMessage_celularconsultor}"/>
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_fotoconsultor}" for="fotoconsultor" />
+                        <p:inputTextarea rows="4" cols="30" id="fotoconsultor" value="#{consultorController.selected.fotoconsultor}" title="#{bundle.EditConsultorTitle_fotoconsultor}" />
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_senhaconsultor}" for="senhaconsultor" />
+                        <p:inputText id="senhaconsultor" value="#{consultorController.selected.senhaconsultor}" title="#{bundle.EditConsultorTitle_senhaconsultor}" />
+                        <p:outputLabel value="#{bundle.EditConsultorLabel_indicadorconsultor}" for="indicadorconsultor" />
+                        <p:inputText id="indicadorconsultor" value="#{consultorController.selected.indicadorconsultor}" title="#{bundle.EditConsultorTitle_indicadorconsultor}" required="true" requiredMessage="#{bundle.EditConsultorRequiredMessage_indicadorconsultor}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{consultorController.update}" value="#{bundle.Save}" update="display,:ConsultorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ConsultorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConsultorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

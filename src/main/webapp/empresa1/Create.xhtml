@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Empresa1CreateDlg" widgetVar="Empresa1CreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmpresa1Title}">
+            <h:form id="Empresa1CreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresa1Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmpresa1Label_empresa1PK_idempresa}" for="empresa1PK_idempresa" />
+                        <p:inputText id="empresa1PK_idempresa" value="#{empresa1Controller.selected.empresa1PK.idempresa}" title="#{bundle.CreateEmpresa1Title_empresa1PK_idempresa}" required="true" requiredMessage="#{bundle.CreateEmpresa1RequiredMessage_empresa1PK_idempresa}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpresa1Label_cnpj}" for="cnpj" />
+                        <p:inputText id="cnpj" value="#{empresa1Controller.selected.cnpj}" title="#{bundle.CreateEmpresa1Title_cnpj}" required="true" requiredMessage="#{bundle.CreateEmpresa1RequiredMessage_cnpj}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpresa1Label_usuario}" for="usuario" />
+                        <p:selectOneMenu id="usuario" value="#{empresa1Controller.selected.usuario}" required="true" requiredMessage="#{bundle.EditEmpresa1RequiredMessage_usuario}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="usuarioItem"
+                                           itemValue="#{usuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empresa1Controller.create}" value="#{bundle.Save}" update="display,:Empresa1ListForm:datalist,:growl" oncomplete="handleSubmit(args,'Empresa1CreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Empresa1CreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

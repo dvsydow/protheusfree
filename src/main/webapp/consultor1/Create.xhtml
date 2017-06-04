@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Consultor1CreateDlg" widgetVar="Consultor1CreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateConsultor1Title}">
+            <h:form id="Consultor1CreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{consultor1Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateConsultor1Label_consultor1PK_idconsultor}" for="consultor1PK_idconsultor" />
+                        <p:inputText id="consultor1PK_idconsultor" value="#{consultor1Controller.selected.consultor1PK.idconsultor}" title="#{bundle.CreateConsultor1Title_consultor1PK_idconsultor}" required="true" requiredMessage="#{bundle.CreateConsultor1RequiredMessage_consultor1PK_idconsultor}"/>
+                        <p:outputLabel value="#{bundle.CreateConsultor1Label_nomeconsultor}" for="nomeconsultor" />
+                        <p:inputText id="nomeconsultor" value="#{consultor1Controller.selected.nomeconsultor}" title="#{bundle.CreateConsultor1Title_nomeconsultor}" required="true" requiredMessage="#{bundle.CreateConsultor1RequiredMessage_nomeconsultor}"/>
+                        <p:outputLabel value="#{bundle.CreateConsultor1Label_usuario}" for="usuario" />
+                        <p:selectOneMenu id="usuario" value="#{consultor1Controller.selected.usuario}" required="true" requiredMessage="#{bundle.EditConsultor1RequiredMessage_usuario}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="usuarioItem"
+                                           itemValue="#{usuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{consultor1Controller.create}" value="#{bundle.Save}" update="display,:Consultor1ListForm:datalist,:growl" oncomplete="handleSubmit(args,'Consultor1CreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Consultor1CreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EspecialidadesconsultorCreateDlg" widgetVar="EspecialidadesconsultorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEspecialidadesconsultorTitle}">
+            <h:form id="EspecialidadesconsultorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{especialidadesconsultorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEspecialidadesconsultorLabel_idespecialidadesconsultor}" for="idespecialidadesconsultor" />
+                        <p:inputText id="idespecialidadesconsultor" value="#{especialidadesconsultorController.selected.idespecialidadesconsultor}" title="#{bundle.CreateEspecialidadesconsultorTitle_idespecialidadesconsultor}" required="true" requiredMessage="#{bundle.CreateEspecialidadesconsultorRequiredMessage_idespecialidadesconsultor}"/>
+                        <p:outputLabel value="#{bundle.CreateEspecialidadesconsultorLabel_idespecialidades}" for="idespecialidades" />
+                        <p:inputText id="idespecialidades" value="#{especialidadesconsultorController.selected.idespecialidades}" title="#{bundle.CreateEspecialidadesconsultorTitle_idespecialidades}" required="true" requiredMessage="#{bundle.CreateEspecialidadesconsultorRequiredMessage_idespecialidades}"/>
+                        <p:outputLabel value="#{bundle.CreateEspecialidadesconsultorLabel_idconsultor}" for="idconsultor" />
+                        <p:inputText id="idconsultor" value="#{especialidadesconsultorController.selected.idconsultor}" title="#{bundle.CreateEspecialidadesconsultorTitle_idconsultor}" required="true" requiredMessage="#{bundle.CreateEspecialidadesconsultorRequiredMessage_idconsultor}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{especialidadesconsultorController.create}" value="#{bundle.Save}" update="display,:EspecialidadesconsultorListForm:datalist,:growl" oncomplete="handleSubmit(args,'EspecialidadesconsultorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EspecialidadesconsultorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

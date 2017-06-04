@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EspecialidadesconsultorViewDlg" widgetVar="EspecialidadesconsultorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEspecialidadesconsultorTitle}">
+            <h:form id="EspecialidadesconsultorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{especialidadesconsultorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEspecialidadesconsultorLabel_idespecialidadesconsultor}"/>
+                        <h:outputText value="#{especialidadesconsultorController.selected.idespecialidadesconsultor}" title="#{bundle.ViewEspecialidadesconsultorTitle_idespecialidadesconsultor}"/>
+                        <h:outputText value="#{bundle.ViewEspecialidadesconsultorLabel_idespecialidades}"/>
+                        <h:outputText value="#{especialidadesconsultorController.selected.idespecialidades}" title="#{bundle.ViewEspecialidadesconsultorTitle_idespecialidades}"/>
+                        <h:outputText value="#{bundle.ViewEspecialidadesconsultorLabel_idconsultor}"/>
+                        <h:outputText value="#{especialidadesconsultorController.selected.idconsultor}" title="#{bundle.ViewEspecialidadesconsultorTitle_idconsultor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EspecialidadesconsultorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

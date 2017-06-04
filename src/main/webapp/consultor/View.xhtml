@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConsultorViewDlg" widgetVar="ConsultorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewConsultorTitle}">
+            <h:form id="ConsultorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{consultorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewConsultorLabel_idconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.idconsultor}" title="#{bundle.ViewConsultorTitle_idconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_nomeconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.nomeconsultor}" title="#{bundle.ViewConsultorTitle_nomeconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_cpfcnpjconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.cpfcnpjconsultor}" title="#{bundle.ViewConsultorTitle_cpfcnpjconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_facebookconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.facebookconsultor}" title="#{bundle.ViewConsultorTitle_facebookconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_emailconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.emailconsultor}" title="#{bundle.ViewConsultorTitle_emailconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_celularconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.celularconsultor}" title="#{bundle.ViewConsultorTitle_celularconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_fotoconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.fotoconsultor}" title="#{bundle.ViewConsultorTitle_fotoconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_senhaconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.senhaconsultor}" title="#{bundle.ViewConsultorTitle_senhaconsultor}"/>
+                        <h:outputText value="#{bundle.ViewConsultorLabel_indicadorconsultor}"/>
+                        <h:outputText value="#{consultorController.selected.indicadorconsultor}" title="#{bundle.ViewConsultorTitle_indicadorconsultor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ConsultorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

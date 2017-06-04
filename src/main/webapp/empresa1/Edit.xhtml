@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Empresa1EditDlg" widgetVar="Empresa1EditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEmpresa1Title}">
+            <h:form id="Empresa1EditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresa1Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEmpresa1Label_empresa1PK_idempresa}" for="empresa1PK_idempresa" />
+                        <p:inputText id="empresa1PK_idempresa" value="#{empresa1Controller.selected.empresa1PK.idempresa}" title="#{bundle.EditEmpresa1Title_empresa1PK_idempresa}" required="true" requiredMessage="#{bundle.EditEmpresa1RequiredMessage_empresa1PK_idempresa}"/>
+                        <p:outputLabel value="#{bundle.EditEmpresa1Label_cnpj}" for="cnpj" />
+                        <p:inputText id="cnpj" value="#{empresa1Controller.selected.cnpj}" title="#{bundle.EditEmpresa1Title_cnpj}" required="true" requiredMessage="#{bundle.EditEmpresa1RequiredMessage_cnpj}"/>
+                        <p:outputLabel value="#{bundle.EditEmpresa1Label_usuario}" for="usuario" />
+                        <p:selectOneMenu id="usuario" value="#{empresa1Controller.selected.usuario}" required="true" requiredMessage="#{bundle.EditEmpresa1RequiredMessage_usuario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="usuarioItem"
+                                           itemValue="#{usuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empresa1Controller.update}" value="#{bundle.Save}" update="display,:Empresa1ListForm:datalist,:growl" oncomplete="handleSubmit(args, 'Empresa1EditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Empresa1EditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
